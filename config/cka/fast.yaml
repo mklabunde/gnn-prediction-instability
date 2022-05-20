@@ -1,0 +1,4 @@
+use_masks:
+  - "test"  # options: "test", "full", "val", "train"
+mode: "diag"  # options: "full", "diag"
+save_to_disk: false  # Whether to save the results of all pairwise comparisons

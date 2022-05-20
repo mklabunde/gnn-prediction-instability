@@ -1,0 +1,4 @@
+use_masks:
+  - "test"  # options: "test", "full", "val", "train"
+mode: "full"  # options: "full", "diag"
+save_to_disk: true

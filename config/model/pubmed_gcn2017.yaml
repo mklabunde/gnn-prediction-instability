@@ -1,0 +1,5 @@
+name: GCN2017
+hidden_dim: 64
+dropout_p: 0.6
+n_layers: 2
+

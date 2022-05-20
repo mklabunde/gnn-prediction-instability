@@ -1,0 +1,28 @@
+defaults:
+  - _self_
+  - optim: adam
+  - dataset: ???
+  - model: ???
+  - cka: fast  # 'fast' only computes CKA between corresponding layers, 'full' computes the full CKA matrix. Use cka.use_masks=[] to skip CKA computation altogether.
+
+seed: 0  # General seed used for almost everything
+datasplit_seed: 0  # Seed used for splitting datasets without public split
+keep_init_seed_constant : false  # Whether to keep the initialization constant over repeated runs
+keep_train_seed_constant: true  # Whether to keep the random factors during training, e.g., dropout patterns, fixed over runs
+
+num_train_per_class: 20  # If a split for a dataset is generated, how many nodes per class should be used for training
+public_split: true  # Whether to use the public split if available, or the fixed num_train_per_class split if not available
+proportional_split: false  # Whether to create training splits, in which the frequency of class labels is proportional to their overall frequency
+degree_split: false  # Whether to create a data split based on the degree distribution
+part_val: 0.15  # Only used with proportional split: how many nodes should be used for validation
+part_test: 0.8  # Only used with proportional split: how many nodes should be used for testing. Rest is used for training.
+
+cuda: ???  # Identifier of a GPU (0, 1, ...) or 'cpu'
+
+n_epochs: 500  # Maximal training epochs
+early_stopping: true  # Whether to use early stopping
+patience: 40  # After how many epochs without val_loss improvement to stop training
+n_repeat: 2  # Repetition of training/how many models are trained
+
+store_activations: false  # Whether to store activations of trained models on disk
+data_root: ???  # CHANGE: this should be an absolute path to the data subdirectory
