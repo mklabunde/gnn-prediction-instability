@@ -1,6 +1,8 @@
 # On the Prediction Instability of Graph Neural Networks
 Implementation and supplementary material of the paper "On the Prediction Instability of Graph Neural Networks".
 
+[[arxiv]](https://arxiv.org/abs/2205.10070)
+
 
 ## Installation
 Clone the repository and move into the root directory.
@@ -59,9 +61,11 @@ Please contact max.klabunde@uni-passau.de in case you have any questions.
 ## Cite
 If you find this work helpful in your research, please consider citing our work.
 
-@article{???,
-  title={On the Prediction Instability of Graph Neural Networks},
-  author={???},
-  journal={???},
-  year={???}
+```
+@article{klabunde_prediction_2022,
+	title = {On the {Prediction} {Instability} of {Graph} {Neural} {Networks}},
+	journal = {arXiv preprint arXiv:2205:10070},
+	author = {Klabunde, Max and Lemmerich, Florian},
+	year = {2022}
 }
+```
