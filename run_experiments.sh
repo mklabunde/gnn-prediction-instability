@@ -2,7 +2,9 @@
 
 tmux new -s run -d
 tmux send-keys "conda activate gnn-pred-stab" C-m
-cuda=7  # CHANGE: can be an integer or "cpu". Recommended: run parts of this script on different GPUs to get results much more quickly.
+tmux send-keys "conda env config vars set CUBLAS_WORKSPACE_CONFIG=:4096:8" Enter
+tmux send-keys "conda activate gnn-pred-stab" Enter
+cuda=3  # CHANGE: can be an integer or "cpu". Recommended: run parts of this script on different GPUs to get results much more quickly.
 reps=50  # 50 for full experiment, 2 for testing
 
 # Baseline
@@ -12,7 +14,7 @@ wait" Enter
 
 # Training size
 tmux send-keys "
-python scripts/run.py dataset=citeseer,pubmed,computers,photo,cs,physics,wikics model=pubmed_gat2017,pubmed_gcn2017 cuda=$cuda n_repeat=$reps proportional_split=true part_test=0.84,0.8,0.75,0.65,0.45,0.25 cka.use_masks=[] -m &
+python scripts/run.py dataset=citeseer,pubmed,computers,photo,cs,physics,wikics model=pubmed_gat2017,pubmed_gcn2017 cuda=$cuda n_repeat=$reps proportional_split=true public_split=false part_test=0.84,0.8,0.75,0.65,0.45,0.25 cka.use_masks=[] datasplit_seed=0,1,2,3,4,5,6,7,8,9 -m &
 wait" Enter
 
 # Optimizer
@@ -45,11 +47,11 @@ wait" Enter
 
 # Combination
 tmux send-keys "
-python scripts/run.py dataset=citeseer,pubmed,computers,photo,cs,wikics model=pubmed_gat2017 cuda=$cuda n_repeat=$reps model.hidden_dim=32 model.dropout_p=0.2 optim.weight_decay=0.2 cka.use_masks=[] -m &
+python scripts/run.py dataset=citeseer,pubmed,computers,photo,cs,wikics model=pubmed_gat2017 cuda=$cuda n_repeat=$reps model.hidden_dim=32 model.dropout_p=0.2 optim.weight_decay=1e-4 cka.use_masks=[] -m &
 wait" Enter
 tmux send-keys "
-python scripts/run.py dataset=physics model=pubmed_gat2017 cuda=$cuda n_repeat=$reps model.hidden_dim=25 model.dropout_p=0.2 optim.weight_decay=0.2 cka.use_masks=[] -m &
+python scripts/run.py dataset=physics model=pubmed_gat2017 cuda=$cuda n_repeat=$reps model.hidden_dim=25 model.dropout_p=0.2 optim.weight_decay=1e-4 cka.use_masks=[] -m &
 wait" Enter
 tmux send-keys "
-python scripts/run.py dataset=citeseer,pubmed,computers,photo,cs,physics,wikics model=pubmed_gcn2017 cuda=$cuda n_repeat=$reps model.hidden_dim=256 model.dropout_p=0.2 optim.weight_decay=0.2 cka.use_masks=[] -m &
+python scripts/run.py dataset=citeseer,pubmed,computers,photo,cs,physics,wikics model=pubmed_gcn2017 cuda=$cuda n_repeat=$reps model.hidden_dim=256 model.dropout_p=0.2 optim.weight_decay=1e-4 cka.use_masks=[] -m &
 wait" Enter

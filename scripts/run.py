@@ -16,6 +16,9 @@ import pandas as pd
 import pytorch_lightning as pl
 import scipy.stats
 import seaborn as sns
+import src.plots
+import src.similarity
+import src.similarity.predictions
 import torch
 import torch.backends.cudnn
 import torch.nn.functional as F
@@ -23,12 +26,8 @@ import torch_geometric.data
 import torch_geometric.transforms as T
 import torch_geometric.utils
 from omegaconf import DictConfig, OmegaConf
-from tqdm import tqdm
-
-import src.plots
-import src.similarity
-import src.similarity.predictions
 from src.training.node import get_dataset, get_idx_split, train_node_classifier
+from tqdm import tqdm
 
 log = logging.getLogger(__name__)
 
@@ -90,6 +89,9 @@ def main(cfg: DictConfig, activations_root: Optional[Union[str, Path]] = None):
     # ----------------------------------------------------------------------------------
     # Prepare data
     pl.seed_everything(cfg.datasplit_seed)
+    torch.use_deterministic_algorithms(
+        True
+    )  # https://docs.nvidia.com/cuda/cublas/index.html#cublasApi_reproducibility
     if cfg.proportional_split and cfg.degree_split:
         raise ValueError("Only one of proportional_split and degree_split can be true.")
     if cfg.proportional_split:

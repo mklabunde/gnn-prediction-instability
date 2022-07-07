@@ -14,8 +14,6 @@ import torch
 import torch_geometric.transforms as T
 import torch_geometric.utils
 from omegaconf import OmegaConf
-from tqdm import tqdm
-
 from src.models.utils import get_model
 from src.similarity.predictions import (
     normalized_pairwise_instability,
@@ -24,9 +22,10 @@ from src.similarity.predictions import (
     pairwise_l1loss,
 )
 from src.training.node import get_dataset
+from tqdm import tqdm
 
 RUNDIR = (
-    Path(__file__).parent / "../multirun/2022-03-25/12-13-33"
+    Path(__file__).parent / "../multirun/2022-06-23/08-15-11"
 )  # CHANGE: path to baseline run
 CACHEDIR = Path(__file__).parent / "cache"
 device = (

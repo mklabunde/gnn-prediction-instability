@@ -33,10 +33,10 @@ runs = {
     "Optimizer": [
         # add
     ],
-    # Additional experiments regarding stability with fixed seeds or CPU compute platform with otherwise baseline models
     "PublicAllStable": [
-        # add
+        # add (Combining optimal hyperparameters)
     ],
+    # Additional experiments regarding stability with fixed seeds or CPU compute platform with otherwise baseline models
     "PublicGATCPU": [
         # add
     ],

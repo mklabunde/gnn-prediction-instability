@@ -11,7 +11,7 @@ keep_init_seed_constant : false  # Whether to keep the initialization constant o
 keep_train_seed_constant: true  # Whether to keep the random factors during training, e.g., dropout patterns, fixed over runs
 
 num_train_per_class: 20  # If a split for a dataset is generated, how many nodes per class should be used for training
-public_split: true  # Whether to use the public split if available, or the fixed num_train_per_class split if not available
+public_split: true  # Whether to use the public split if available, or the fixed num_train_per_class split if not available. Set this to false if you want to use another type of split.
 proportional_split: false  # Whether to create training splits, in which the frequency of class labels is proportional to their overall frequency
 degree_split: false  # Whether to create a data split based on the degree distribution
 part_val: 0.15  # Only used with proportional split: how many nodes should be used for validation

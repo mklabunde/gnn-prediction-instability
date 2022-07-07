@@ -111,10 +111,13 @@ def save_pairwise_instability_distribution(
     diffs: np.ndarray, savepath: Optional[Union[str, Path]] = None
 ):
     if savepath is not None:
-        g = sns.displot(x=diffs)
-        g.set_xlabels("Pairwise instable predictions")
-        savefig(g, savepath, fname="pairwise_instable.jpg")
-        plt.close()
+        try:
+            g = sns.displot(x=diffs)
+            g.set_xlabels("Pairwise instable predictions")
+            savefig(g, savepath, fname="pairwise_instable.jpg")
+            plt.close()
+        except Exception as e:  # should only be numpy.core._exceptions.MemoryError
+            log.error("Histogram failed (%s)", e)
 
 
 def save_scatter_correlation(
