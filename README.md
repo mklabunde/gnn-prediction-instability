@@ -28,6 +28,7 @@ Some parts require updated paths.
 Ctrl+F for `CHANGE` over the whole project to find them.
 
 ## Reproducing the results
+The code from [this commit](https://github.com/mklabunde/gnn-prediction-instability/commit/969e84c4ed147fbd242d3080cc6e7c26e5057472) was used to produce the final results.
 ### Training
 To simply rerun all experiments, use `bash run_experiments.sh` (Takes >24h on a single RTX3090).
 If you want to reproduce the results, we recommend splitting the commands in the file into multiple scripts and executing them individually on different GPUs.
