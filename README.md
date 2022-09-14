@@ -1,8 +1,8 @@
 # On the Prediction Instability of Graph Neural Networks
 Implementation and supplementary material of the paper "On the Prediction Instability of Graph Neural Networks", accepted at ECML PKDD 2022.
-We will add a link to the published version as soon as it is available.
-Note that we made some small corrections for the published version. 
+Note that we made some small corrections for the published version compared to the arxiv version (that we may not update). 
 
+[[Paper]](https://2022.ecmlpkdd.org/wp-content/uploads/2022/09/sub_955.pdf)
 [[arxiv]](https://arxiv.org/abs/2205.10070)
 [[Supplementary]](supplementary_material.pdf)
 
